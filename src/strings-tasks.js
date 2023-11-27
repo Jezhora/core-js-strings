@@ -149,10 +149,16 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
-}
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
 
+  if (index !== -1) {
+    return str.slice(0, index) + str.slice(index + value.length);
+  }
+
+  return str;
+}
+// console.log(removeFirstOccurrences('I like legends', 'end'))
 /**
  * Remove the last occurrence of a substring from a string.
  *
@@ -165,8 +171,14 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const index = str.lastIndexOf(value);
+
+  if (index !== -1) {
+    return str.slice(0, index) + str.slice(index + value.length);
+  }
+
+  return str;
 }
 
 /**
@@ -181,9 +193,18 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let summ = 0;
+  if (str) {
+    for (let i = 0; i < str.length; i += 1) {
+      summ += str[i].charCodeAt();
+    }
+  } else {
+    return 0;
+  }
+  return summ;
 }
+// console.log(sumOfCodes('My String'))
 
 /**
  * Checks if a string starts with a specific substring.
@@ -405,9 +426,10 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.replace(/\bHello, \b/, '').slice(0, -1);
 }
+// console.log(extractNameFromTemplate('Hello, John Doe!'))
 
 /**
  * Remove the first and last angle brackets from tag string
